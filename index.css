@@ -1,0 +1,180 @@
+    
+    :root {
+            --cyan: #00f3ff;
+            --magenta: #ff003c;
+            --bg-dark: #050a15;
+            --panel-bg: rgba(10, 20, 40, 0.6);
+            --border-glow: rgba(0, 243, 255, 0.3);
+            --text-main: #e2f1f8;
+            --danger: #ff3366;
+            --success: #00ffaa;
+            --glass-blur: blur(12px);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-dark);
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* 玻璃拟物化面板基础样式 */
+        .sci-fi-panel {
+            background: var(--panel-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 243, 255, 0.05);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 边角科技修饰 */
+        .sci-fi-panel::before, .sci-fi-panel::after {
+            content: ''; position: absolute; width: 15px; height: 15px;
+            border: 2px solid var(--cyan); transition: all 0.3s ease;
+        }
+        .sci-fi-panel::before { top: 0; left: 0; border-right: none; border-bottom: none; border-top-left-radius: 12px;}
+        .sci-fi-panel::after { bottom: 0; right: 0; border-left: none; border-top: none; border-bottom-right-radius: 12px;}
+
+        .container {
+            max-width: 1200px; margin: 0 auto; padding: 15px;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+
+        /* 头部标题 */
+        .header {
+            text-align: center; padding: 25px;
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, transparent, var(--cyan), transparent) 1;
+        }
+        .header h1 {
+            font-size: 2.2rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 4px;
+            background: linear-gradient(90deg, var(--cyan), #fff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+        .header .subtitle { font-size: 0.9rem; color: var(--magenta); letter-spacing: 6px; }
+
+        /* HUD 状态栏 */
+        .hud-bar {
+            display: flex; flex-wrap: wrap; justify-content: space-between;
+            background: rgba(0, 0, 0, 0.4); border-radius: 8px; padding: 12px 20px;
+            border: 1px solid rgba(255, 0, 60, 0.2);
+        }
+        .hud-item { display: flex; align-items: center; gap: 10px; font-family: monospace; font-size: 1.1rem; }
+        .hud-item span.label { color: rgba(255,255,255,0.6); font-size: 0.9rem;}
+        .hud-item span.value { color: var(--cyan); font-weight: bold; text-shadow: 0 0 10px var(--cyan); }
+
+        /* 核心布局 */
+        .layout-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 900px) { .layout-grid { grid-template-columns: 1fr 350px; } }
+
+        /* 终端剧情区 */
+        .terminal-container { display: flex; flex-direction: column; height: 50vh; min-height: 400px; }
+        .terminal-header { color: var(--cyan); font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .terminal-header::before { content: '>'; color: var(--magenta); animation: blink 1s infinite; }
+        
+        .story-content {
+            flex: 1; overflow-y: auto; padding-right: 10px;
+            font-size: 1rem; color: #d0d0d0;
+            display: flex; flex-direction: column; gap: 15px;
+            scroll-behavior: smooth;
+        }
+        .story-block { background: rgba(0,0,0,0.3); padding: 15px; border-left: 3px solid var(--cyan); border-radius: 4px; animation: fadeIn 0.4s ease-out; }
+        .story-block.player-action { border-left-color: var(--magenta); color: #fff; background: rgba(255, 0, 60, 0.1); font-style: italic; }
+
+        /* 角色卡片 */
+        .character-list { display: flex; flex-direction: column; gap: 12px; }
+        .char-card {
+            background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px; padding: 12px; transition: all 0.3s;
+        }
+        .char-card:hover { border-color: rgba(0, 243, 255, 0.4); background: rgba(0, 243, 255, 0.05); }
+        .char-card.player { border-color: rgba(255, 0, 60, 0.4); background: rgba(255, 0, 60, 0.05); }
+        
+        .char-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-weight: bold; }
+        .status-tag { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; background: var(--cyan); color: #000; }
+        .char-card.player .status-tag { background: var(--magenta); color: #fff; }
+
+        /* 进度条 */
+        .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; font-size: 0.8rem; }
+        .bar-label { width: 35px; color: rgba(255,255,255,0.7); }
+        .bar-track { flex: 1; height: 6px; background: rgba(0,0,0,0.5); border-radius: 3px; overflow: hidden; position: relative; }
+        .bar-fill { height: 100%; transition: width 0.4s ease; }
+        .bar-val { width: 30px; text-align: right; font-family: monospace; }
+        
+        .hp-fill { background: linear-gradient(90deg, #ff003c, #ff6680); box-shadow: 0 0 8px #ff003c; }
+        .hg-fill { background: linear-gradient(90deg, #ffaa00, #ffcc66); box-shadow: 0 0 8px #ffaa00; }
+        .th-fill { background: linear-gradient(90deg, #0088ff, #66bbff); box-shadow: 0 0 8px #0088ff; }
+        .sn-fill { background: linear-gradient(90deg, #aa00ff, #dd66ff); box-shadow: 0 0 8px #aa00ff; }
+
+        /* 选项面板 */
+        .options-grid { display: grid; gap: 12px; margin-top: 15px; }
+        .btn-option {
+            background: rgba(0, 243, 255, 0.05); border: 1px solid rgba(0, 243, 255, 0.2);
+            color: #fff; padding: 15px 20px; border-radius: 8px; cursor: pointer;
+            text-align: left; font-size: 1rem; display: flex; align-items: center; gap: 15px;
+            transition: all 0.2s; position: relative; overflow: hidden;
+        }
+        .btn-option::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,243,255,0.1), transparent);
+            transition: 0.5s;
+        }
+        .btn-option:hover::before { left: 100%; }
+        .btn-option:hover, .btn-option:active {
+            background: rgba(0, 243, 255, 0.15); border-color: var(--cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2); transform: translateY(-2px);
+        }
+        .btn-option .num {
+            background: rgba(0,0,0,0.5); border: 1px solid var(--cyan); color: var(--cyan);
+            padding: 4px 10px; border-radius: 4px; font-family: monospace; font-weight: bold;
+        }
+
+        /* 系统控制栏 */
+        .sys-controls { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
+        .btn-sys {
+            background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); color: #aaa;
+            padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s;
+        }
+        .btn-sys:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.1); }
+
+        /* 登录面板 */
+        .login-panel { max-width: 500px; margin: 40px auto; text-align: center; }
+        .input-group { margin: 20px 0; }
+        .input-api {
+            width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--cyan);
+            border-radius: 8px; color: var(--cyan); font-family: monospace; outline: none; font-size: 1rem;
+        }
+        .input-api:focus { box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
+        .btn-primary {
+            background: var(--cyan); color: #000; border: none; padding: 15px 40px; font-weight: bold;
+            font-size: 1.1rem; border-radius: 8px; cursor: pointer; transition: all 0.2s; width: 100%;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+        .btn-primary:active { transform: scale(0.98); }
+        
+        .loader {
+            width: 30px; height: 30px; border: 3px solid rgba(0,243,255,0.2);
+            border-top-color: var(--cyan); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;
+        }
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
