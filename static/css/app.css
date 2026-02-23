@@ -30,3 +30,28 @@
     from { background-position: 0 0, 0 0, 0 0; }
     to { background-position: 0 0, 0 1000px, 1000px 0; }
 }
+.scifi-dialogue {
+    position: relative;
+    padding: 10px 20px;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+/*剧情*/
+.story-text {
+    padding-left: 15px;
+    margin: 10px 0;
+    border-left: 4px solid #00f2ff;
+    color: #e0f7fa;
+    background: rgba(0, 242, 255, 0.05); /* 淡淡的背景色增强区块感 */
+}
+
+/*旁白*/
+.narrator-text {
+    padding-left: 15px;
+    margin: 10px 0;
+    border-left: 4px solid #bc13fe;
+    color: #f3e5f5;
+    font-style: italic; /* 旁白常用斜体 */
+    background: rgba(188, 19, 254, 0.05);
+}
