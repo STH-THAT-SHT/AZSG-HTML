@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Zombie Survivor</title>
+    <meta name="keywords" content="Ai,AI游戏,AI末世求生,末世,求生,小游戏,deepseek">
+    <meta name="description" content="AZSG是一款由AI驱动的SLG游戏，玩家将扮演一个末世的生存者，在充满危险的末世世界中生存。游戏内容由AI生成，因此开放性很高。">
+    <link rel="stylesheet" href="static/css/mdui.min.css">
+    <link rel="stylesheet" href="static/css/app.css">
+</head>
+<body class="mdui-theme-layout-dark">
+    <div class="scifi-canvas-bg"></div>
+    <div class="mdui-container" style="padding-top: 12px;">
+        <!--main start-->
+        <div class="mdui-card">
+            <div class="mdui-card-content">
+                <h1 class="mdui-text-center">AI Zombie Survivor<div class="mdui-card-primary-subtitle">VER 0.0.2</div></h1>
+                <p style="text-align: center;">An AI Powered H5 GAME.</p>
+            </div>
+        </div>
+
+        <!--status data-->
+        <div class="mdui-card" style="margin-top: 16px;">
+            <div class="mdui-card-content">
+                    <div class="mdui-row">
+                        <div class="mdui-col-sm-3 mdui-col-xs-6 mdui-text-left">
+                            <span>游戏日: <div id="gameDay"></div></span>
+                        </div>
+
+                        <div class="mdui-col-sm-3 mdui-col-xs-6 mdui-text-left">
+                            <span>天气: <div id="gameWeather"></div></span> 
+                        </div>
+
+                        <div class="mdui-col-sm-3 mdui-col-xs-6 mdui-text-left">
+                            <span>广播强度: <div id="gameBoradcast"></div></span>
+                        </div>
+
+                        <div class="mdui-col-sm-3 mdui-col-xs-6 mdui-text-left">
+                            <span>污染强度: <div id="gameDirty"></div></span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <!--row-->
+        <div class="mdui-row" style="margin-top: 16px;
+        ">
+            <div class="mdui-col-md-8">
+                <div class="mdui-card">
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">正在进行中</div>
+                        
+                        <div class="mdui-typo"><hr /></div>
+                    </div>
+                    <div class="mdui-card-content" style="
+                max-height: 50vh;
+                overflow-y: auto;
+                overflow-x: hidden;">
+                        <div id="gameHistory"></div>
+                        <br />
+                        <div id="gameOpt"></div>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1><h1>test</h1><h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1>
+                        <h1>test</h1><h1>test</h1><h1>test</h1>
+                        
+                    </div>
+                    </div>
+
+                </div>
+            <div class="mdui-col-md-4">
+                <div class="mdui-card">
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">角色状态</div>
+                        <div class="mdui-typo"><hr /></div>
+                    </div>
+                    <div class="mdui-card-content" style="
+                max-height: 50vh;
+                overflow-y: auto;
+                overflow-x: hidden;">
+                        <div id="gameCStatus"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--end-->
+                <div class="mdui-card" style="margin-top: 8px;">
+            <div class="mdui-card-content">
+                <p>© STH-THAT-SHT 2026 | ALL_RIGHTS_RESERVED | <a href="https://github.com/STH-THAT-SHT/AZSG-HTML" target="_blank">Site is open source on GITHUB</a></p>
+            </div>
+        </div>
+    </div>
+    <!--script-->
+    <script src="static/js/mdui.min.js"></script>
+    <script src="static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+.scifi-canvas-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -999; 
+    background-color: #0a0e14;
+    overflow: hidden;
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(0, 188, 212, 0.1) 0%, transparent 70%),
+        linear-gradient(90deg, rgba(0, 188, 212, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(0, 188, 212, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    animation: scifi-grid-move 60s linear infinite;
+}
+.scifi-canvas-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.1) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 1;
+    pointer-events: none;
+}
+@keyframes scifi-grid-move {
+    from { background-position: 0 0, 0 0, 0 0; }
+    to { background-position: 0 0, 0 1000px, 1000px 0; }
+}
